@@ -9,12 +9,9 @@ public class PlayerController : MonoBehaviour
     bool left;
     bool right;
     bool up;
-   
-   
     void Update()
     {
         
-   
     }
     private void FixedUpdate()
     {
