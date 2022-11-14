@@ -23,36 +23,33 @@ public class playerControl : MonoBehaviour
 
     public void Drive()
     {
-        while(transform.position.y <= 500)
-        {
-            if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W))
             {
-                rb.AddForce(transform.forward * moveSpeed);
-                moveSpeed ++;
+               rb.AddForce(transform.forward * moveSpeed);
+               moveSpeed ++;
             }
-            else if (Input.GetKey(KeyCode.S))
+        else if (Input.GetKey(KeyCode.S))
             {
-                rb.AddForce(-transform.forward * moveSpeed);
+               rb.AddForce(-transform.forward * moveSpeed);
                 
             }
-            else if (Input.GetKey(KeyCode.A))
+        else if (Input.GetKey(KeyCode.A))
             {
-                transform.Rotate(Vector3.up, -turnSpeed *moveSpeed * Time.deltaTime);
+               transform.Rotate(Vector3.up, -turnSpeed *moveSpeed * Time.deltaTime);
             }
-            else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D))
             {
-                transform.Rotate(Vector3.up, turnSpeed *moveSpeed* Time.deltaTime);
+               transform.Rotate(Vector3.up, turnSpeed *moveSpeed* Time.deltaTime);
             }
-            else if(Input.GetKey(KeyCode.Space))
+         else if(Input.GetKey(KeyCode.Space))
             {
-            
                 while (i >= 100)
                 {
-                    moveSpeed --;
-                    i--;
+                   moveSpeed --;
+                   i--;
                 }
             }
-            else
+           else
             {
                 moveSpeed = 1;
             }
