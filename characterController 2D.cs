@@ -15,10 +15,10 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        Movemnet();
+        Movement();
     }
 
-    void Movemnet()
+    void Movement()
     {
         left = Input.GetKey(KeyCode.A);
         right = Input.GetKey(KeyCode.D);
