@@ -2,41 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class playerController : MonoBehaviour
 {
-    public float speed;
-    public float jumpAmount;
-    bool left;
-    bool right;
-    bool up;
-    void Update()
+    public int speed;
+    public int jumpAmount;
+    public Rigidbody2D rb;
+    bool isgrounded;
+    
+
+    void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         
     }
-    private void FixedUpdate()
+
+    void FixedUpdate()
     {
         Movement();
     }
 
     void Movement()
     {
-        left = Input.GetKey(KeyCode.A);
-        right = Input.GetKey(KeyCode.D);
-        up = Input.GetKey(KeyCode.W);
-
-        if (left)
+        if (Input.GetKey(KeyCode.A))
         {
-            transform.Translate(Vector2.left * speed * Time.fixedDeltaTime);
+            rb.AddForce(Vector2.left * speed);
+            
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            rb.AddForce(Vector2.right * speed);
+        }
+        if(Input.GetKey(KeyCode.Space) && (GetComponent<BoxCollider2D>().IsTouchingLayers(LayerMask.NameToLayer("Floor"))))
+        {
+            rb.AddForce(new Vector2(0,jumpAmount), ForceMode2D.Impulse);
         }
 
-        if (right)
-        {
-            transform.Translate(Vector2.right * speed * Time.fixedDeltaTime);
-        }
-
-        if (up) 
-        {
-            transform.Translate(Vector2.up * jumpAmount * Time.fixedDeltaTime);
-        }
     }
 }
+
